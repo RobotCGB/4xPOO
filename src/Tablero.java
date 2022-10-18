@@ -8,12 +8,19 @@ public class Tablero {
         this.numColumnas = 7;
         this.numFilas = 6;
         columnas = new Columna[numColumnas];
+        for(int i = 0; i < numColumnas; i++){ columnas[i] = new Columna(); }
     }
 
-    public Tablero(int numFilas, int numColumnas){
-        super();
-        this.numColumnas = numColumnas;
-        this.numFilas = numFilas;
+    public int getNumColumnas() {
+        return numColumnas;
+    }
+
+    public int getNumFilas() {
+        return numFilas;
+    }
+
+    public Columna[] getColumnas() {
+        return columnas;
     }
 
     private boolean tableroLleno(){
@@ -22,12 +29,15 @@ public class Tablero {
             while (!ok && j < numFilas){
                 if(columnas[i].getPosiciones()[j] == Colores.VACIO)
                     ok = true;
+                j++;
             }
+            j=0;
+            i++;
         }
         return !ok;
     }
 
-    private boolean enVertical(){//de este no estoy seguro, me he marcado un poco un triple
+    private boolean comprobar4enVertical(){
         int cuenta = 0;
         int mejor = 0;
         for(int i = 1; i < numFilas; i++){
@@ -44,7 +54,7 @@ public class Tablero {
 
     }
 
-    private boolean enHorizontal(){
+    private boolean comprobar4enHorizontal(){
         int cuenta = 0;
         int mejor = 0;
         for(int i = 0; i < numFilas; i++){
@@ -61,9 +71,26 @@ public class Tablero {
     }
 
     public boolean isFinDePartida(){
-        return tableroLleno() || enHorizontal() || enVertical();
+        return tableroLleno() || comprobar4enHorizontal() || comprobar4enVertical();
     }
 
+    public boolean insertarFicha(Colores color, int noColm){//haciendose
+        boolean ok = false;
+        Columna colmSelec = columnas[noColm];
+        int i = 0;
+        while(!ok && i < numFilas){
+            if(colmSelec.getUnaPosicion(i) == Colores.VACIO){
+                colmSelec.setUnaPosicion(color, i);
+            }
 
+            i++;
+        }
+
+        if(i == numFilas){
+            System.out.println("Columna llena");
+        }
+
+        return ok;
+    }
 
 }

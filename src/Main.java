@@ -5,7 +5,7 @@ public class Main {
         ArrayList<Jugador> jugadores = new ArrayList<>();
         Partida partida = new Partida();
 
-
+        partida.dibujarTablero();
 
     }
 

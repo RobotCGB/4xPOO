@@ -1,26 +1,26 @@
 public class Partida {
-    Jugador[] jugadores;
+    Jugador jugadorUno;
+    Jugador jugadorDos;
     Tablero tablero;
 
-    public Partida(){
-        this.tablero = new Tablero(7,6);
-        this.jugadores = new Jugador[2];
-        this.jugadores[0] = new Jugador("Default1");
-        this.jugadores[1] = new Jugador("Default2");
-    }
-
-    public Partida(Jugador jugador1, Jugador jugador2){
-        super();
-        this.jugadores[0] = jugador1;
-        this.jugadores[1] = jugador2;
+    public Partida(Tablero tablero, Jugador jugador1, Jugador jugador2){
+        this.tablero = tablero;
+        this.jugadorUno = jugador1;
+        this.jugadorDos = jugador2;
     }
 
     public Tablero getTablero() {
         return tablero;
     }
 
-    public Jugador[] getJugadores() {
-        return jugadores;
+    public void dibujarTablero(){
+
+        for(int i = tablero.getNumFilas(); i > 0; i--){
+            for (int j = 0; j < tablero.getNumColumnas(); j++){
+                System.out.print(tablero.getColumnas()[j].getUnaPosicion(i).getPinta() + "  ");
+            }
+            System.out.println();
+        }
     }
 
 }
