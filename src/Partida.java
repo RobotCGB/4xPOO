@@ -54,16 +54,17 @@ public class Partida {
 
             fin = tablero.isFinDePartida();
 
+            System.out.println();
+            System.out.println();
+
             if(fin){
                 System.out.print("GAME OVER. ");
                 if(tablero.tableroLleno())
                     System.out.println("El tablero esta lleno");
                 else
                     System.out.println("GANA " + jugadorActual.getPinta());
+                dibujarTablero();
             }
-
-            System.out.println();
-            System.out.println();
 
             cambioDeJugador();
 

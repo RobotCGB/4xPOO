@@ -2,7 +2,7 @@ public class Tablero {
 
     private final int numColumnas = 7;
     private final int numFilas = 6;
-    private Columna[] columnas;
+    private final Columna[] columnas;
 
     public Tablero(){
         columnas = new Columna[numColumnas];
