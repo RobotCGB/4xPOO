@@ -1,5 +1,5 @@
 public enum Colores {
-    ROJO("R", "\u001B[31m"), AZUL("A", "\u001B[36m"), VACIO("-", "\u001B[0m");
+    ROJO("ROJO", "\u001B[31m"), AZUL("AZUL", "\u001B[36m"), VACIO("VACIO", "\u001B[0m");
 
     private String pinta;
     private String pigmento;

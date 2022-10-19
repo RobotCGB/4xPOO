@@ -21,11 +21,11 @@ public class Tablero {
         return columnas;
     }
 
-    private boolean tableroLleno(){
+    public boolean tableroLleno(){
         int i = 0; int j = 0; boolean ok = false;
         while(!ok && i < numColumnas){
             while (!ok && j < numFilas){
-                if(columnas[i].getPosiciones()[j] == Colores.VACIO)
+                if(columnas[i].getUnaPosicion(j) == Colores.VACIO)
                     ok = true;
                 j++;
             }
@@ -38,17 +38,18 @@ public class Tablero {
     private boolean comprobar4enVertical(){
         int cuenta = 0;
         int mejor = 0;
-        for(int i = 1; i < numFilas; i++){
-            for(int j = 0; j < numColumnas; j++){
-                if(columnas[j].getPosiciones()[i].equals(columnas[j].getPosiciones()[i-1])){
+        for(int i = 0; i < numFilas; i++){
+            for(int j = 0; j < numColumnas-1; j++){
+                if(columnas[i].getUnaPosicion(j) == columnas[i].getUnaPosicion(j+1) && columnas[i].getUnaPosicion(j) != Colores.VACIO){
                     cuenta++;
                 } else
                     cuenta = 0;
                 if(cuenta >= mejor)
                     mejor = cuenta;
             }
+            cuenta = 0;
         }
-        return mejor >= 4;
+        return mejor >= 3;
 
     }
 
@@ -56,20 +57,21 @@ public class Tablero {
         int cuenta = 0;
         int mejor = 0;
         for(int i = 0; i < numFilas; i++){
-            for(int j = 1; j < numColumnas; j++){
-                if(columnas[i].getPosiciones()[j].equals(columnas[i].getPosiciones()[j-1])){
+            for(int j = 0; j < numColumnas-1; j++){
+                if(columnas[j].getUnaPosicion(i) == columnas[j+1].getUnaPosicion(i) && columnas[j].getUnaPosicion(i) != Colores.VACIO){
                     cuenta++;
                 } else
                     cuenta = 0;
                 if(cuenta >= mejor)
                     mejor = cuenta;
             }
+            cuenta = 0;
         }
-        return mejor >= 4;
+        return mejor >= 3;
     }
 
     public boolean isFinDePartida(){
-        return tableroLleno();
+        return tableroLleno() || comprobar4enVertical() || comprobar4enHorizontal();
     }
 
     public boolean insertarFicha(Colores color, int noColm){

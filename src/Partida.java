@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Partida {
@@ -28,7 +29,7 @@ public class Partida {
         }
     }
 
-    public void iniciarPartida(){
+    public void iniciarPartida() throws InputMismatchException {
         boolean fin = false;
         Scanner sc = new Scanner(System.in);
         int posicionElegida = -1;
@@ -50,15 +51,23 @@ public class Partida {
                 }
             }
             columnaEsPosible = false;
-            cambioDeJugador();
+
             fin = tablero.isFinDePartida();
 
+            if(fin){
+                System.out.print("GAME OVER. ");
+                if(tablero.tableroLleno())
+                    System.out.println("El tablero esta lleno");
+                else
+                    System.out.println("GANA " + jugadorActual.getPinta());
+            }
+
             System.out.println();
             System.out.println();
+
+            cambioDeJugador();
 
         } while(!fin);
-
-        System.out.println("Se acabó la partida. GAME OVER");
 
     }
 
