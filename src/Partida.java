@@ -19,7 +19,7 @@ public class Partida {
             for (int j = 0; j < tablero.getNumColumnas(); j++){
                 System.out.print(" | ");
                 if(!tablero.getColumnas()[j].getUnaPosicion(i).equals(Colores.VACIO))
-                    System.out.print(tablero.getColumnas()[j].getUnaPosicion(i).getPinta());
+                    System.out.print(tablero.getColumnas()[j].getUnaPosicion(i).getPigmento() + "●" + Colores.VACIO.getPigmento());
                 else System.out.print(" ");
                 if(j == tablero.getNumColumnas()-1)
                     System.out.print(" |");
