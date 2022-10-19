@@ -2,15 +2,11 @@ import java.awt.*;
 import java.util.Scanner;
 
 public class Partida {
-    Jugador jugadorUno;
-    Jugador jugadorDos;
     Tablero tablero;
     Colores jugadorActual;
 
-    public Partida(Tablero tablero, Jugador jugador1, Jugador jugador2){
+    public Partida(Tablero tablero){
         this.tablero = tablero;
-        this.jugadorUno = jugador1;
-        this.jugadorDos = jugador2;
         this.jugadorActual = Colores.ROJO;
     }
 
