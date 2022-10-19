@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.Scanner;
 
 public class Partida {
@@ -18,10 +19,14 @@ public class Partida {
     }
 
     public void dibujarTablero(){
-
         for(int i = tablero.getNumFilas() - 1; i >= 0; i--){
             for (int j = 0; j < tablero.getNumColumnas(); j++){
-                System.out.print(tablero.getColumnas()[j].getUnaPosicion(i).getPinta() + "  ");
+                System.out.print(" | ");
+                if(!tablero.getColumnas()[j].getUnaPosicion(i).equals(Colores.VACIO))
+                    System.out.print(tablero.getColumnas()[j].getUnaPosicion(i).getPinta());
+                else System.out.print(" ");
+                if(j == tablero.getNumColumnas()-1)
+                    System.out.print(" |");
             }
             System.out.println();
         }
