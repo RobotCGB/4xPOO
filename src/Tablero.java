@@ -1,12 +1,10 @@
 public class Tablero {
 
-    private int numColumnas;
-    private int numFilas;
+    private final int numColumnas = 7;
+    private final int numFilas = 6;
     private Columna[] columnas;
 
     public Tablero(){
-        this.numColumnas = 7;
-        this.numFilas = 6;
         columnas = new Columna[numColumnas];
         for(int i = 0; i < numColumnas; i++){ columnas[i] = new Columna(); }
     }
@@ -71,22 +69,22 @@ public class Tablero {
     }
 
     public boolean isFinDePartida(){
-        return tableroLleno() || comprobar4enHorizontal() || comprobar4enVertical();
+        return tableroLleno();
     }
 
-    public boolean insertarFicha(Colores color, int noColm){//haciendose
+    public boolean insertarFicha(Colores color, int noColm){
         boolean ok = false;
         Columna colmSelec = columnas[noColm];
         int i = 0;
         while(!ok && i < numFilas){
             if(colmSelec.getUnaPosicion(i) == Colores.VACIO){
                 colmSelec.setUnaPosicion(color, i);
+                ok = true;
             }
-
             i++;
         }
 
-        if(i == numFilas){
+        if(!ok){
             System.out.println("Columna llena");
         }
 

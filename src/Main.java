@@ -2,10 +2,12 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        ArrayList<Jugador> jugadores = new ArrayList<>();
-        Partida partida = new Partida();
+        Tablero tablero = new Tablero();
+        Jugador jugadorUno = new Jugador();
+        Jugador jugadorDos = new Jugador();
+        Partida partida = new Partida(tablero, jugadorUno, jugadorDos);
 
-        partida.dibujarTablero();
+        partida.iniciarPartida();
 
     }
 

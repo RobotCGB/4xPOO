@@ -5,4 +5,8 @@ public class Jugador {
         this.nombre = nombre;
     }
 
+    public Jugador(){
+        this("Default");
+    }
+
 }

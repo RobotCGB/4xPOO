@@ -10,4 +10,7 @@ public enum Colores {
     public String getPinta() {
         return pinta;
     }
+
+
+
 }
