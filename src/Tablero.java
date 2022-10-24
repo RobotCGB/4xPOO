@@ -71,7 +71,7 @@ public class Tablero {
     }
 
     public boolean isFinDePartida(){
-        return tableroLleno() || comprobar4enVertical() || comprobar4enHorizontal();
+        return tableroLleno() /*|| comprobar4enVertical() || comprobar4enHorizontal()*/;
     }
 
     public boolean insertarFicha(Colores color, int noColm){
